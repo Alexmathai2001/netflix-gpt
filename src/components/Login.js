@@ -3,9 +3,10 @@ import Header from './Header'
 import {loginFormValidation} from '../utils/validate'
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from 'firebase/auth'
 import { auth } from '../utils/firebase'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
+  const navigate = useNavigate()
   const [checkSignIn,setcheckSignIn] = useState(true)
   const [errorMessage , seterrorMessage] = useState(null)
   const name = useRef(null)
@@ -21,7 +22,7 @@ const Login = () => {
     seterrorMessage(message);
     if(message) return
 
-    if(!loginFormValidation){
+    if(!checkSignIn){
       createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
       .then((userCredential) => {
         // Signed up 
@@ -41,12 +42,13 @@ const Login = () => {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
+        navigate("/browse")
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        seterrorMessage(errorCode + errorMessage)
+        seterrorMessage(errorCode + errorMessage + "hello world")
       });
     }
   }
