@@ -5,7 +5,7 @@ const Browse = () => {
   return (
     <div className='w-full'>
       <Header />
-      <span>Browse</span>
+      <span className=''>Browse</span>
     </div>
   )
 }

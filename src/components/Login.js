@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import {loginFormValidation} from '../utils/validate'
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from 'firebase/auth'
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,6 +41,16 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        console.log(user);
+        updateProfile(user, {
+          name: name.current, photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(() => {
+          // Profile updated!
+          // ...
+        }).catch((error) => {
+          // An error occurred
+          // ...
+        });
         console.log(user);
         navigate("/browse")
         // ...
