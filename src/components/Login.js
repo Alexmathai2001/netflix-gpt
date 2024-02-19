@@ -27,7 +27,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
-        console.log(user);
         // ...
       })
       .catch((error) => {
@@ -41,7 +40,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user);
         updateProfile(user, {
           name: name.current, photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(() => {
@@ -51,7 +49,6 @@ const Login = () => {
           // An error occurred
           // ...
         });
-        console.log(user);
         navigate("/browse")
         // ...
       })
