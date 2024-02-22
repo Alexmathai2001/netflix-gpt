@@ -64,7 +64,7 @@ const Header = () => {
             {supported_languages.map((lang) => <option value={lang.code} key={lang.code} className="bg-gray-50 rounded-md text-black">{lang.code}</option>)}
           </select>}
           <button className="bg-gray-300 hover:bg-gray-400 font-semibold px-6 py-0 mx-4 rounded-lg" onClick={handleSearchToggle}>
-            GPT Search
+            {gptselector ? "Home Page" : "GPT Search"}
           </button>
           <img src={GIT_PROFILE_PHOTO} className="h-10 w-10 rounded-full" />
 
